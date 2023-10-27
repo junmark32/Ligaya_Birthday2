@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Add custom styles here */
+        .card-container {
+            perspective: 1000px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .card {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 20px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            border-radius: 20px;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .front {
+            background-color: purple;
+            color: white;
+        }
+
+        .back {
+            background-color: black;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .scrollable-content {
+            max-height: 200px;
+            overflow: auto;
+            padding: 10px;
+        }
+
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+        .scrollable-content::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<audio id="audio" src="./rsc/Munimuni - Bawat Piyesa.mp3"></audio>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card-container text-center">
+                <div class="card" id="card">
+                    <div class="card-inner">
+                        <div class="front">
+                            <h2>Happy Birthday Ma Bee!🐝💜</h2>
+                            <div class="button-container">
+                                <button class="btn btn-primary" onclick="playSongAndFlip()">Click me</button>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- Insert your photo and message here -->
+                            <div>
+                                <img src="./rsc/photo1.jpg" alt="Your Photo" style="max-width: 100%; max-height: 100%; border-radius: 20px;">
+                                <div class="scrollable-content">
+                                    <p>Hey love, baby, mahal, ma bee dami CS HAHAHA pero mas gusto ko ikaw 😎, Happy birthday love! Alam ko stressed ka pa sa ginagawa mo ngayon at naiiyak ka rin at halos sumasakit na rin ulo mo, kaso wala tayong mabibiling spare parts sa Shopee, char. Baby alam ko at alam mo rin na minsan gabi na tayo nag-uusap at 'yun lang talaga 'yung time natin sa isa't isa kasi may kanya-kanya naman talaga tayong buhay. Hindi man lagi tayo magkasama, parehas naman tayo nag-grow sa buhay at mas gusto ko na susuportahan kita sa ganon. Gusto ko nakikita kita masaya kaya ginagawa ko lahat para sa ating dalawa, hindi lang para sa akin. Gusto kita kasama maabot ang pangarap natin.</p>
+                                    <p>Sa ups and downs mo, gusto ko andoon ako, hindi kita hahayaang mag-isa. Busy man akong tao pero hahanap at hahanap pa rin ako ng time para sa atin. Ayoko paramdam sayo na balewala ka, priority kita. May darating din sa atin mga pagkakataon na mapapagod tayo pero mas pipiliin ko na piliin ka araw-araw. Ikaw lang yung gusto kong kasama.</p>
+                                    <p>Sa unang pagkikita natin, nakita ko sa mata mo na deserve mo mahalin, deserve mo lahat ng magagandang nangyayari sa buhay mo, sa mga problems na nalagpasan mo deserve mo na ang maging masaya kaya ginagawa ko ang lahat para sayo. Ang ganda mo ngumiti, ang ganda ng mata mo. Hindi ako magsasawang sabihin lagi sayo yan. Ang sitwasyon natin mahirap kasi strikto magulang mo at nirerespeto ko naman sila lagi, pero naiintindihan ko 'yon kasi mahal kita at hinihintay ko yung oo mo. Pero wag mo naman akong gawing kaibigan, pre, HAHAHA. Subukan mo lang. 🙂</p>
+                                    <p>I just wanted to remind you that no matter how busy or tired life gets, you will always be my number one priority. I'm here to support you through every challenge, to celebrate your victories, and to be your unwavering cheerleader. I believe in you and your dreams, and I can't wait to see you succeed in all you set out to achieve. Your happiness and success mean the world to me.
+                                    </p>
+                                    <p>So Happy Birthday My Ligaya!🐝💜</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and custom script -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    function flipCard() {
+        var card = document.getElementById('card');
+        card.classList.toggle('flipped');
+    }
+
+    function playSongAndFlip() {
+        var audio = document.getElementById('audio');
+        audio.play();
+        flipCard();
+    }
+</script>
+</body>
+</html>
